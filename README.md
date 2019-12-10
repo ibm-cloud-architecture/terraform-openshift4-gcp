@@ -35,7 +35,7 @@ This project uses mainly Terraform as infrastructure management and installation
    brew install terraform
    ```
 
-   We recommend to run Terraform automation from an GCP bastion host because the installation will place the entire OpenShift cluster in a private network where you might not have easy access to validate the cluster installation from your laptop.
+   We recommend to run Terraform automation from an GCP bastion host because the installation will place the entire OpenShift cluster in a private network where you might not have easy access to validate the cluster installation from your laptop.d
 
    Provision a VM instance (with public and private subnets).
    Install Terraform binary.
