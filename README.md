@@ -6,7 +6,7 @@ This project automates the Red Hat Openshift Container Platform 4.2 installation
 * [Terraform Automation](#terraform-automation)
 * [Installation Procedure](#installation-procedure)
 * [Cluster access](#cluster-access)
-* [AWS Cloud Provider](#aws-cloud-provider)
+* [Google Cloud Provider](#google-cloud-provider)
 
 
 ## Infrastructure Architecture
@@ -35,7 +35,7 @@ This project uses mainly Terraform as infrastructure management and installation
    brew install terraform
    ```
 
-   We recommend to run Terraform automation from an GCP bastion host because the installation will place the entire OpenShift cluster in a private network where you might not have easy access to validate the cluster installation from your laptop.d
+   We recommend to run Terraform automation from an GCP bastion host because the installation will place the entire OpenShift cluster in a private network where you might not have easy access to validate the cluster installation from your laptop.
 
    Provision a VM instance (with public and private subnets).
    Install Terraform binary.
