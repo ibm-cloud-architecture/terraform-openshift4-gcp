@@ -2,9 +2,6 @@
 
 This [terraform](terraform.io) implementation will deploy OpenShift 4.x into a GCP VPC, with two subnets for controlplane and worker nodes.  Traffic to the master nodes is handled via a pair of loadbalancers, one for internal traffic and another for external API traffic.  Application loadbalancing is handled by a third loadbalancer that talks to the router pods on the infra or worker nodes.  Worker, Infra and Master nodes are deployed across 3 Availability Zones
 
-![Topology](./media/topology.svg) 
-
-
 
 # Prerequisites
 
