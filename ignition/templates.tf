@@ -648,7 +648,7 @@ spec:
       - name:  client
         image: quay.io/openshift/origin-cli:latest
         command: ["/bin/sh","-c"]
-        args: ["while ! /usr/bin/oc get configs cluster >/dev/null 2>&1; do sleep 1;done;/usr/bin/oc patch configs cluster --type merge --patch '{\"spec\": {\"defaultRoute\": true,%{if var.infra_count > 0}\"nodeSelector\": {\"node-role.kubernetes.io/infra\": \"\"}%{endif}}}'"]
+        args: ["while ! /usr/bin/oc get configs cluster >/dev/null 2>&1; do sleep 1;done;/usr/bin/oc patch configs cluster --type merge --patch '{\"spec\": {\"defaultRoute\": true%{if var.infra_count > 0},\"nodeSelector\": {\"node-role.kubernetes.io/infra\": \"\"}%{endif}}}'"]
       restartPolicy: Never
 EOF
 }
