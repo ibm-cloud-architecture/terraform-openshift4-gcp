@@ -152,7 +152,7 @@ variable "openshift_version" {
 variable "airgapped" {
   type = map(string)
   default = {
-    airgapped  = false
+    enabled    = false
     repository = ""
   }
 }
