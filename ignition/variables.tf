@@ -107,6 +107,7 @@ variable "serviceaccount_encoded" {
 variable "airgapped" {
   type = map(string)
   default = {
-    enabled = false
+    enabled    = false
+    repository = ""
   }
 }
