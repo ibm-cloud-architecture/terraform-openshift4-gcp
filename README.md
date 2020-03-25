@@ -54,7 +54,7 @@ gcp_service_account = "credentials.json"
 | gcp_worker_os_disk_size | Size of worker node root volume                                | 128             | string |
 | gcp_infra_os_disk_size | Size of infra node root volume                                 | 128             | string |
 | gcp_image_uri          | URL of the CoreOS image. Can be found [here](https://github.com/openshift/installer/blob/master/data/data/rhcos.json) | [URL](https://storage.googleapis.com/rhcos/rhcos/42.80.20191002.0.tar.gz) | string |
-| openshift_version                     | Version of OpenShift to deploy.                                | latest          | strig |
+| openshift_version                     | Version of OpenShift to deploy.                                | latest          | string |
 |gcp_bootstrap_enabled|Setting this to false allows the bootstrap resources to be disabled|true|bool|
 |gcp_bootstrap_lb|Setting this to false allows the bootstrap resources to be removed from the cluster load balancers|true|bool|
 | airgapped                             | Configuration for an AirGapped environment                     | [AirGapped](airgapped.md) default is `false`| map |
