@@ -29,7 +29,10 @@ case $(uname -s) in
 esac
 chmod u+x ${local.installer_workspace}/jq
 rm -f ${local.installer_workspace}/*.tar.gz ${local.installer_workspace}/robots*.txt* ${local.installer_workspace}/README.md
-if [[ "${var.airgapped["enabled"]}" == "true" ]]; then ${local.installer_workspace}/oc adm release extract -a ${path.root}/${var.openshift_pull_secret} --command=openshift-install ${var.airgapped["repository"]}:${var.openshift_version} && mv ${path.root}/openshift-install ${local.installer_workspace};fi
+if [[ "${var.airgapped["enabled"]}" == "true" ]]; then
+  ${local.installer_workspace}/oc adm release extract -a ${path.root}/${var.openshift_pull_secret} --command=openshift-install ${var.airgapped["repository"]}:${var.openshift_version}
+  mv ${path.root}/openshift-install ${local.installer_workspace}
+fi
 EOF
   }
 
