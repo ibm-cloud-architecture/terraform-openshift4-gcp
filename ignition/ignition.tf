@@ -5,6 +5,10 @@ locals {
 }
 
 resource "null_resource" "download_binaries" {
+
+  triggers = {
+    installer_workspace = local.installer_workspace
+  }
   provisioner "local-exec" {
     when    = create
     command = <<EOF
@@ -38,9 +42,12 @@ EOF
 
   provisioner "local-exec" {
     when    = destroy
-    command = "rm -rf ${local.installer_workspace}"
+    command = "rm -rf ${self.triggers.installer_workspace}"
+    environment = {
+      installer_workspace = self.triggers.installer_workspace
+    }
   }
-
+  
 }
 
 

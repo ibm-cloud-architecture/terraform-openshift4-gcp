@@ -22,3 +22,6 @@ makefile
 # installer-files
 **/installer-files/*
 **/reference/*
+openshift_pull_secret.json
+ignition/show.txt
+make_cluster.txt
