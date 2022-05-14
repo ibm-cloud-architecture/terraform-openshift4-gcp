@@ -52,7 +52,7 @@ variable "public_ssh_key" {
 
 variable "openshift_installer_url" {
   type    = string
-  default = "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/"
+  default = "https://mirror.openshift.com/pub/openshift-v4/clients/ocp"
 }
 
 variable "openshift_version" {
@@ -110,4 +110,17 @@ variable "airgapped" {
     enabled    = false
     repository = ""
   }
+}
+
+variable "network_type" {
+  description = "May only be OpenShiftSDN or OVNKubernetes.  OVNKubernetes includes hybridOberlay"
+  type = string
+  default = "OpenShiftSDN"
+  validation {
+    condition = can(regex("OpenShiftSDN|OVNKubernetes", var.network_type))
+    error_message = "The network type must be either OpenShiftSDN (default) or OVNKubernetes."
+  }
+}
+variable "gcp_service_account" {
+  type = string
 }

@@ -20,7 +20,7 @@ networking:
   - cidr: ${var.cluster_network_cidr}
     hostPrefix: ${var.cluster_network_host_prefix}
   machineCIDR: ${var.machine_cidr}
-  networkType: OpenShiftSDN
+  networkType: ${var.network_type}
   serviceNetwork:
   - ${var.service_network_cidr}
 platform:
@@ -239,6 +239,34 @@ EOF
 resource "local_file" "cluster-network-02-config" {
   content  = data.template_file.cluster-network-02-config.rendered
   filename = "${local.installer_workspace}/manifests/cluster-network-02-config.yml"
+  depends_on = [
+    null_resource.download_binaries,
+    null_resource.generate_manifests,
+  ]
+}
+
+data "template_file" "cluster-network-03-config" {
+  template = <<EOF
+apiVersion: operator.openshift.io/v1
+kind: Network
+metadata:
+  name: cluster
+spec:
+  clusterNetwork:
+  - cidr: ${var.cluster_network_cidr}    hostPrefix: 23
+  serviceNetwork:
+  - ${var.service_network_cidr}
+  defaultNetwork:
+    ovnKubernetesConfig:
+      hybridOverlayConfig: {}
+    type: OVNKubernetes
+EOF
+}
+
+resource "local_file" "cluster-network-03-config" {
+  count = var.network_type == "OVNKubernetes" ? 1 : 0
+  content  = data.template_file.cluster-network-03-config.rendered
+  filename = "${local.installer_workspace}/manifests/cluster-network-03-config.yml"
   depends_on = [
     null_resource.download_binaries,
     null_resource.generate_manifests,
